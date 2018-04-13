@@ -286,6 +286,21 @@ class PagesController(p.toolkit.BaseController):
         )
         if _page is None:
             return self._pages_list_pages(page_type)
+        
+        # Attempt to make sure page language matches requested language
+        desired_lang_code = pylons.request.environ['CKAN_LANG']
+        acceptable_lang_codes = [desired_lang_code, desired_lang_code.split('_', 1)[0]]
+        page_lang_code = _page.get('lang')
+        page_order = _page.get('order')
+        if page_lang_code and page_lang_code not in acceptable_lang_codes and page_order is not None:
+            for acceptable_lang_code in acceptable_lang_codes:
+                page = p.toolkit.get_action('ckanext_pages_show')(
+                    data_dict={'order': page_order,
+                               'lang': acceptable_lang_code}
+                )
+                if page:
+                    return p.toolkit.redirect_to('pages_show', page = "/%s" % str(page.get('name')))
+        
         p.toolkit.c.page = _page
         self._inject_views_into_page(_page)
 
