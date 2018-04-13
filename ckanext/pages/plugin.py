@@ -11,7 +11,7 @@ import ckan.lib.helpers as h
 import actions
 import auth
 
-from ckan.common request
+from ckan.common import request
 
 if toolkit.check_ckan_version(min_version='2.5'):
     from ckan.lib.plugins import DefaultTranslation
