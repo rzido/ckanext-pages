@@ -2,6 +2,7 @@ import cgi
 import logging
 import urllib
 from pylons import config
+import pylons
 import ckan.plugins.toolkit as toolkit
 ignore_missing = toolkit.get_validator('ignore_missing')
 
@@ -9,6 +10,8 @@ import ckan.plugins as p
 import ckan.lib.helpers as h
 import actions
 import auth
+
+from ckan.common request
 
 if toolkit.check_ckan_version(min_version='2.5'):
     from ckan.lib.plugins import DefaultTranslation
