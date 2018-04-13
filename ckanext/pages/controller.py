@@ -1,6 +1,7 @@
 import ckan.plugins as p
 import ckan.lib.helpers as helpers
 from pylons import config
+import pylons
 
 _ = p.toolkit._
 
