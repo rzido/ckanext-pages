@@ -290,10 +290,10 @@ class PagesController(p.toolkit.BaseController):
         
         # Attempt to make sure page language matches requested language
         desired_lang_code = pylons.request.environ['CKAN_LANG']
-        print desired_lang_code
+
         
         acceptable_lang_codes = [desired_lang_code, desired_lang_code.split('_', 1)[0]]
-        print acceptable_lang_codes
+
         
         page_lang_code = _page.get('lang')
         page_order = _page.get('order')
