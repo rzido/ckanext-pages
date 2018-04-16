@@ -324,7 +324,10 @@ class PagesController(p.toolkit.BaseController):
         return self._pages_list_pages('page')
 
     def _pages_list_pages(self, page_type):
-        data_dict={'org_id': None, 'page_type': page_type}
+        
+        desired_lang_code = pylons.request.environ['CKAN_LANG']
+        
+        data_dict={'org_id': None, 'page_type': page_type, 'lang': desired_lang_code}
         if page_type == 'blog':
             data_dict['order_publish_date'] = True
         p.toolkit.c.pages_dict = p.toolkit.get_action('ckanext_pages_list')(
