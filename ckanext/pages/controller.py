@@ -276,6 +276,9 @@ class PagesController(p.toolkit.BaseController):
 
 
     def pages_show(self, page=None, page_type='page'):
+        
+        print '*********************************************************'
+        print page_type
         p.toolkit.c.page_type = page_type
         if page:
             page = page[1:]
