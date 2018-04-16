@@ -5,6 +5,7 @@ import pylons
 import logging
 
 _ = p.toolkit._
+log = logging.getLogger(__name__)
 
 class PagesController(p.toolkit.BaseController):
     controller = 'ckanext.pages.controller:PagesController'
@@ -278,7 +279,7 @@ class PagesController(p.toolkit.BaseController):
 
     def pages_show(self, page=None, page_type='page'):
         
-        log = logging.getLogger(__name__)
+
         log.info('*********************************************************')
         log.info(page_type)
         p.toolkit.c.page_type = page_type
