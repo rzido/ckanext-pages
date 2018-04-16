@@ -86,9 +86,12 @@ def get_wysiwyg_editor():
 
 
 def get_recent_blog_posts(number=5, exclude=None):
+    
+    desired_lang_code = pylons.request.environ['CKAN_LANG']
+    
     blog_list = toolkit.get_action('ckanext_pages_list')(
         None, {'order_publish_date': True, 'private': False,
-               'page_type': 'blog'}
+               'page_type': 'blog', 'lang': desired_lang_code}
     )
     new_list = []
     for blog in blog_list:
