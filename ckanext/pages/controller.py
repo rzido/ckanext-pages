@@ -280,8 +280,8 @@ class PagesController(p.toolkit.BaseController):
     def pages_show(self, page=None, page_type='page'):
         
 
-        log.info('*********************************************************')
-        log.info(page_type)
+        log.debug('*********************************************************')
+        log.debug(page_type)
         p.toolkit.c.page_type = page_type
         if page:
             page = page[1:]
@@ -296,10 +296,10 @@ class PagesController(p.toolkit.BaseController):
         
         # Attempt to make sure page language matches requested language
         desired_lang_code = pylons.request.environ['CKAN_LANG']
-        log.info(desired_lang_code)
+        log.debug(desired_lang_code)
         
         acceptable_lang_codes = [desired_lang_code, desired_lang_code.split('_', 1)[0]]
-        log.info(acceptable_lang_codes)
+        log.debug(acceptable_lang_codes)
         
         page_lang_code = _page.get('lang')
         page_order = _page.get('order')
